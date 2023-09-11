@@ -1,10 +1,10 @@
 function calculateRisk() {
     var gender = true; // false for male, true for female
-    var age = 0;
-    var chol = 0;
+    var age = getText("age_input");
+    var chol = getText("chol_input");
     var smoker = false;
-    var hdl = 0;
-    var sysBP = 0;
+    var hdl = getText("hdl_input");;
+    var sysBP = getText("sysBP_input");
     var bp_treatment = false;
 
     var pts = 0;
