@@ -33,23 +33,27 @@
 
               <!-- <div class="row"> -->
                 <div class="col align-self-center">
-                    <button type="button" class="btn btn-outline-light" data-bs-toggle="button" style="color:#0480fc; outline: 3px" onclick="risk()">Assess risk</button>
+                    <button type="button" class="btn btn-outline-light" data-bs-toggle="button" style="color:#0480fc; outline: 3px" onclick="risk()">View recommendations</button>
                     <p>Hypertension class: <span id="risk_output">---</span></p>
                 </div>
                 
                     <div class="input-group col">
                         <span class="input-group-text">Age</span>
-                        <input type="text" class="form-control" placeholder="(1-120)" id="dia_input">
+                        <input type="text" class="form-control" placeholder="(20-120)" id="age_input">
                         <span class="input-group-text">years</span> 
                     </div>
               </div>
 
-              <p>Click "Assess Risk" to view the hypertension category.</p>
+              <p>Click "View Recommendations" to display the recommendations based on your age.</p>
               <p id="alerttext" style="color:red"></p>
 
               <!-- Gives info on different hypertension classes -->
-              <h5>Class: <span id="classtext"></span></h5>
-              <p id="desctext">...</p>
+              <h5>Recommendations: <span id="classtext"></span></h5>
+              <p id="breasttext"></p>
+              <p id="cervixtext"></p>
+              <p id="colontext"></p>
+              <p id="lungtext"></p>
+              <p id="prostatetext"></p>
 
 
                <!-- <div class="row">
