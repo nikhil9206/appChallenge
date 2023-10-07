@@ -1,11 +1,16 @@
 function calculateRisk() {
+    //weird error thing
+    var text_error_handler = getText("age_input");
+
     var gender = true; // false for male, true for female
-    var age = getText("age_input");
-    var chol = getText("chol_input");
+    var age = parseInt(getValue("age_input"));
+    var chol = parseInt(getText("chol_input"));
     var smoker = false;
-    var hdl = getText("hdl_input");;
-    var sysBP = getText("sysBP_input");
-    var bp_treatment = false;
+    var hdl = parseInt(getText("hdl_input"));
+    var sysBP = parseInt(getText("sysBP_input"));
+    var diaBP = parseInt(getText("diaBP_input"));
+    var race = parseInt(getValue("race_input"));
+    var bp_treatment = getValue("asp_input");
 
     var pts = 0;
     var risk = 0;
@@ -120,7 +125,7 @@ function calculateRisk() {
     else if (hdl < 40) pts += 2;
 
     // Systolic Blood Pressure points
-    if (bp_treatment) {
+    if (bp_treatment == "on") {
         if (sysBP < 120) pts += (gender ? 0 : 0);
         else if (sysBP >= 120 && sysBP <= 129) pts += (gender ? 3 : 1);
         else if (sysBP >= 130 && sysBP <= 139) pts += (gender ? 4 : 2);
@@ -167,8 +172,44 @@ function calculateRisk() {
         else if (pts == 16) risk = 25;
         else if (pts >= 17) risk = 30;
     }
-
-    return risk;
+    if (race == 2) risk = Math.floor(risk * 1.25);
+    hyprisk();
+    setText("risknum", risk + "%")
+    
 }
 
+function hyprisk() {
+    var sys = parseInt(getText("sysBP_input"));
+    var dia = parseInt(getText("diaBP_input"));
+
+    if (isNaN(sys) || isNaN(dia)) {
+        setText("alerttext", "Please enter a valid number for the fields");
+    } else if (sys < 90 || sys > 300) {
+        setText("alerttext", "Systolic pressure must be between 90 and 300");
+    } else if (dia < 50 || dia > 240) {
+        setText("alerttext", "Diastolic pressure must be between 50 and 240");
+    } else if (dia > sys) {
+        setText("alerttext", "Diastolic pressure must be lower than systolic pressure"); 
+    } else if (sys < 120 && dia < 80) {
+        setText("alerttext", "");
+        setText("classtext", "Low");
+        setText("desctext", "Your blood pressure is at a healthy level.")
+    } else if (sys < 130 && dia < 80) {
+        setText("alerttext", "");
+        setText("classtext", "Elevated");
+        setText("desctext", "You're in a prehypertensive state. You should watch your blood pressure levels and try to maintain a healthy lifestyle.")
+    } else if (sys < 140 || dia < 90) {
+        setText("alerttext", "");
+        setText("classtext", "Stage 1 Hypertension");
+        setText("desctext", "You have hypertension. You should consult a doctor and try to maintain a healthy lifestyle.")
+    } else if (sys < 180 || dia < 120) {
+        setText("alerttext", "");
+        setText("classtext", "Stage 2 Hypertension");
+        setText("desctext", "You have hypertension. You should consult a doctor and try to maintain a healthy lifestyle.")
+    } else {
+        setText("alerttext", "");
+        setText("classtext", "Hypertensive Crisis");
+        setText("desctext", "You have hypertension. You should consult a doctor and try to maintain a healthy lifestyle.")
+    }
+}
 console.log(calculateRisk());

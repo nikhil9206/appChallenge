@@ -11,7 +11,7 @@ function risk() {
     if (isNaN(age)) {
         setText("alerttext", "Please enter a valid number for the fields");
     } else if (age < 20) {
-        setText("alerttext", "An age of atleast 20 is recommended to use this tool.");
+        setText("alerttext", "An age of at least 20 is recommended to use this tool.");
     } else if (age > 120) {
         setText("alerttext", "Age cannot exceed 120 years.");
     }

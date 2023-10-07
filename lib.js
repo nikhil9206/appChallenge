@@ -49,3 +49,8 @@ function isNum(element) {
     }
     return bool;
 }
+
+function getValue(element) {
+    var value = document.getElementById(element).value;
+    return value;
+}
