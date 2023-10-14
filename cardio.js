@@ -2,11 +2,14 @@ function calculateRisk() {
     //weird error thing
     var text_error_handler = getText("age_input");
 
-    var gender = true; // false for male, true for female
+    var error = false;
+
+    var gender = (parseInt(getValue("gender_input")) == 2); // false for male, true for female
     var age = parseInt(getValue("age_input"));
     var chol = parseInt(getText("chol_input"));
     var smoker = false;
     var hdl = parseInt(getText("hdl_input"));
+    var ldl = parseInt(getText("ldl_input"));
     var sysBP = parseInt(getText("sysBP_input"));
     var diaBP = parseInt(getText("diaBP_input"));
     var race = parseInt(getValue("race_input"));
@@ -173,8 +176,41 @@ function calculateRisk() {
         else if (pts >= 17) risk = 30;
     }
     if (race == 2) risk = Math.floor(risk * 1.25);
-    hyprisk();
-    setText("risknum", risk + "%")
+
+    var height = parseInt(getText("hft_input")) * 12 + parseInt(getText("hin_input"));
+    var weight = parseInt(getText("weight_input"));
+
+    setText("risknum", "Your risk will be calculated here.");
+    setText("classtext", "");
+    setText("desctext", "");
+    setText("bminum", "");
+
+    if (isNaN(age) || isNaN(chol) || isNaN(hdl) || isNaN(sysBP) || isNaN(diaBP)) {
+        setText("alerttext", "All numerical fields must be filled out or must contain a valid number");
+    } else if (sysBP < 90 || sysBP > 300) {
+        setText("alerttext", "Systolic pressure must be between 90 and 300");
+    } else if (diaBP < 50 || diaBP > 240) {
+        setText("alerttext", "Diastolic pressure must be between 50 and 240");
+    } else if (diaBP > sysBP) {
+        setText("alerttext", "Diastolic pressure must be lower than systolic pressure"); 
+    } else if (age < 20) {
+        setText("alerttext", "An age of at least 20 is recommended to use this tool.");
+    } else if (chol < 130 || chol > 320) {
+        setText("alerttext", "Total cholesterol must be between 130 and 320");
+    } else if (hdl < 20 || hdl > 100) {
+        setText("alerttext", "HDL must be between 20 and 100");
+    } else if (ldl < 30 || ldl > 300) {
+        setText("alerttext", "LDL must be between 30 and 300");
+    } else if (chol < (hdl + ldl)) {
+        setText("alerttext", "The sum of HDL and LDL must be less than total cholesterol");
+    } else {
+        setText("risknum", "Chance of developing cardiovascular disease in the next 10 years: " + risk + "%");
+        hyprisk();
+        var bmi = (weight / (height * height)) * 703;
+        bmi = Math.round(bmi * 10) / 10;
+        setText("bminum", bmi);
+    }
+
     
 }
 

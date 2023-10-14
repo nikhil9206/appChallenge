@@ -51,8 +51,8 @@
               <div class="row">
                 <p class="font-weight-bold" style="line-height: 0px; font-weight: bold">Background</p>
                 <div class="input-group mb-3 col">
-                    <span class="input-group-text" for="inputGroupSelect01">Sex</span>
-                    <select class="form-select" id="inputGroupSelect01">
+                    <span class="input-group-text" for="gender_input">Sex</span>
+                    <select class="form-select" id="gender_input">
                       <option selected>Choose...</option>
                       <option value="1">Male</option>
                       <option value="2">Female</option>
@@ -76,14 +76,14 @@
             <div class="row">
                 <div class="input-group col">
                     <span class="input-group-text">Height</span>
-                    <input type="text" class="form-control" placeholder="ft">
+                    <input type="text" class="form-control" placeholder="ft" id="hft_input">
                     <span class="input-group-text">'</span>
-                    <input type="text" class="form-control" placeholder="in">
+                    <input type="text" class="form-control" placeholder="in" id="hin_input">
                     <span class="input-group-text">''</span> 
                 </div>
                 <div class="input-group col">
                     <span class="input-group-text">Weight</span>
-                    <input type="text" class="form-control" placeholder="Weight">
+                    <input type="text" class="form-control" placeholder="Weight" id="weight_input">
                     <span class="input-group-text">pounds</span> 
                 </div>
             </div>
@@ -112,7 +112,7 @@
                     </div>
                     <div class="input-group col">
                         <span class="input-group-text">LDL</span>
-                        <input type="text" class="form-control" placeholder="LDL (30 - 300)">
+                        <input type="text" class="form-control" placeholder="LDL (30 - 300)" id="ldl_input">
                     </div>
 
              </div>
@@ -147,9 +147,10 @@
                           <!-- Gives info on different hypertension classes -->
                           <br>
                           <p id="alerttext" style="color:red"></p>
-                          <p id="risknum">.</p>
-                          <h5>Hypertension Class: <span id="classtext"></span></h5>
-                          <p id="desctext">...</p>
+                          <h5>Analysis</h5>
+                          <p id="risknum">Your risk will be calculated here.</p>
+                          <p>Hypertension Class: <span id="classtext"></span>, <span id="desctext"></span></p>
+                          <p id="bmi">BMI: <span id="bminum"></span></p>
             
 
         
