@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cardiovascular  Risk Calculator</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <script src="cardio.js"></script>
     <script src="lib.js"></script>
   </head>
@@ -16,147 +16,227 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 
-    <div class="container text-center">
+    <!-- nav bar -->
+    <nav class="navbar sticky-top navbar-expand-lg bg-info-subtle">
 
-        <div class="row">
-
-            <div class="col fs-1">
-                Cardiovascular Disease Risk Calculator
+        <div class="container-fluid">
+  
+        <!-- main title button -->
+        <a class="navbar-brand f-3 fw-bold" href="main.html">Cardiovascular Risk Calculator</a>
+          
+        <!-- button expands to options -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- option and buttons -->
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav w-100 d-flex justify-content-end">
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" aria-current="page" href="main.html">Home</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="cardio.html" role="button">Cardiovascular Risk</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="hyp.html" role="button">Hypertension</a>
+  
+              <a class="btn btn-outline-primary p-auto w-atuo fs-8 m-2" href="cancer.html" role="button">Cancer Screening</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="vax.html" role="button">Vaccinations</a>
             </div>
-
         </div>
-
-        <div class="row">
-            <a href="main.html">Home</a>
+  
         </div>
-        <div class="row">
-            <div class="col-4 text-center d-block overflow-hidden">
-                <a href="hyp.html">Hypertension</a>
-            </div>
-            <div class="col-4 text-center">
-                <div class="d-block d-md-none"><a href="cancer.html" style="text-align: center">Cancer</a></div>
-                <div class="d-none d-md-block"><a href="cancer.html" style="text-align: center">Cancer Recommendations</a></div>
-            </div>
-            <div class="col-4 text-center">
-                <div class="d-block d-lg-none"><a href="vax.html" style="text-align: center">Vaccinations</a></div>
-                <div class="d-none d-lg-block"><a href="vax.html" style="text-align: center">Vaccination Recommendations</a></div>
-            </div>
-        </div>
+      </nav>
 
+  
+        <!-- main body -->
+        <div class="text-center bg-light-subtle ms-2 me-2 p-4">
 
+            <!-- all questions -->
+            <div class="row row-cols-4 ms-1 me-1 "> 
 
-        <div class="row p-3 text-primary-emphasis bg-light-subtle border border-primary-subtle rounded-3 gap-3"> 
+                    <!-- all background questions -->
+                    <div class="col bg-light-subtle rounded-3">
+                                <!-- title -->
+                                <div class="fs-3 fw-bold">Background</div>
 
+                                <!-- gender -->
+                                <div class="input-group col mt-1 mb-3">
+                                    <span class="input-group-text fs-8" for="gender_input">Sex</span>
+                                    <select class="form-select fs-8" id="gender_input">
+                                    <option selected>Choose...</option>
+                                    <option value="1">Male</option>
+                                    <option value="2">Female</option>
+                                    </select>
+                                </div>
 
-              <div class="row">
-                <p class="font-weight-bold" style="line-height: 0px; font-weight: bold">Background</p>
-                <div class="input-group mb-3 col">
-                    <span class="input-group-text" for="gender_input">Sex</span>
-                    <select class="form-select" id="gender_input">
-                      <option selected>Choose...</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
-                    </select>
-                  </div>
-                    <div class="input-group col">
-                        <span class="input-group-text">Age</span>
-                        <input type="text" class="form-control" placeholder="Age" id="age_input">
-                        <span class="input-group-text">years</span> 
+                                <!-- ethnicity -->
+                                <div class="input-group col mb-3">
+                                    <span class="input-group-text fs-8" for="race_input">Ethinicity</span>
+                                    <select class="form-select fs-8" id="race_input">
+                                    <option selected> Choose...</option>
+                                    <option value="1">Caucasian</option>
+                                    <option value="2">African-American</option>
+                                    <option value="3">Other</option>
+                                    </select>
+                                </div>
+
+                                <!-- age -->
+                                <div class="input-group col mb-3">
+                                        <span class="input-group-text fs-8">Age</span>
+                                        <input type="number" min="20" class="form-control" placeholder="(20 or older)" id="age_input">
+                                        <span class="input-group-text fs-8">years</span> 
+                                </div>
                     </div>
-                    <div class="input-group col">
-                        <span class="input-group-text" for="race_input">Race</span>
-                        <select class="form-select" id="race_input">
-                        <option selected>Choose...</option>
-                        <option value="1">Caucasian</option>
-                        <option value="2">African-American</option>
-                        <option value="3">Other</option>
-                        </select>
+
+
+                    <!-- all physical questions -->
+                    <div class="col bg-light-subtle rounded-3">
+                                <!-- title -->
+                                <div class="fs-3 fw-bold">Stature </div>
+                        
+                                <!-- height -->
+                                <div class="input-group col mt-3 mb-4">
+                                    <span class="input-group-text fs-8">Height</span>
+                                    <input type="number" step="1" min="0" class="form-control" placeholder="ft" id="hft_input">
+                                    <span class="input-group-text fs-10">'</span>
+                                    <input type="number" step="1" min="0" max="11" class="form-control" placeholder="in" id="hin_input">
+                                    <span class="input-group-text fs-10">''</span> 
+                                </div>
+
+                                <!-- weight -->
+                                <div class="input-group col">
+                                    <span class="input-group-text fs-8">Weight</span>
+                                    <input type="number" step="0.1" min="0" class="form-control" placeholder="Weight" id="weight_input">
+                                    <span class="input-group-text fs-8">lbs</span> 
+                                </div>
                     </div>
-              </div>
-            <div class="row">
-                <div class="input-group col">
-                    <span class="input-group-text">Height</span>
-                    <input type="text" class="form-control" placeholder="ft" id="hft_input">
-                    <span class="input-group-text">'</span>
-                    <input type="text" class="form-control" placeholder="in" id="hin_input">
-                    <span class="input-group-text">''</span> 
+
+
+                    <!-- all bp questions -->
+                    <div class="col bg-light-subtle rounded-3">
+                                <!-- title -->
+                                <div class="fs-3 fw-bold">Blood Pressure</div>
+                        
+                                <!-- systolic bp -->
+                                <div class="input-group col mt-3 mb-4">
+                                        <span class="input-group-text fs-8">Systolic</span>
+                                        <input type="number" min="90" max="300"class="form-control" placeholder="(90-300)" id="sysBP_input">
+                                        <span class="input-group-text fs-8">bpm</span>
+                                </div>
+
+                                <!-- distolic bp -->
+                                <div class="input-group col">
+                                        <span class="input-group-text fs-8">Diastolic</span>
+                                        <input type="number" min="50" max="240" class="form-control" placeholder="(50-240)" id="diaBP_input">
+                                        <span class="input-group-text fs-8">bpm</span> 
+                                </div>
+                    </div>
+
+
+                    <div class="col bg-light-subtle rounded-3">
+
+                                <!-- title -->
+                                <div class="fs-3 fw-bold">Cholestrol</div>
+                        
+                                <!-- total chol -->
+                                <div class="input-group col mb-3">
+                                    <span class="input-group-text fs-8">Total</span>
+                                    <input type="number" min="130" max="320" class="form-control" placeholder="(130-320)" id="chol_input">
+                                </div>
+
+                                <!-- hdl -->
+                                <div class="input-group col mb-3">
+                                    <span class="input-group-text fs-8">HDL</span>
+                                    <input type="number" min="20" max="100" class="form-control" placeholder="(20-100)" id="hdl_input">
+                                </div>
+
+                                <!-- ldl -->
+                                <div class="input-group col mb-3">
+                                    <span class="input-group-text fs-8">LDL</span>
+                                    <input type="number" min="30" max="300" class="form-control" placeholder="(30 - 300)" id="ldl_input">
+                                </div>
+
+                    </div>
+
                 </div>
-                <div class="input-group col">
-                    <span class="input-group-text">Weight</span>
-                    <input type="text" class="form-control" placeholder="Weight" id="weight_input">
-                    <span class="input-group-text">pounds</span> 
-                </div>
-            </div>
 
-              <div class="row">
-                <p class="font-weight-bold" style="line-height: 0px; font-weight: bold">Blood Pressure</p>
-                <div class="input-group col">
-                        <span class="input-group-text">Blood pressure: </span>
-                        <input type="text" class="form-control" placeholder="Systolic BP (90-300)" id="sysBP_input">
-                        <span class="input-group-text">/</span>
-                        <input type="text" class="form-control" placeholder="Diastolic BP (50-240)" id="diaBP_input">
-                        <span class="input-group-text">bpm</span> 
-                    </div>
-              </div>
+                <!-- other factors -->
+                <div class="fs-3 fw-bold text-center"> Other </div>
 
+                <div class="row row-cols-3 ms-2 me-2">
 
-               <div class="row">
-                <p class="font-weight-bold" style="line-height: 0px; font-weight: bold">Cholesterol (mg/dL)</p>
-                    <div class="input-group col">
-                        <span class="input-group-text">Total</span>
-                        <input type="text" class="form-control" placeholder="(130-320)" id="chol_input">
-                    </div>
-                    <div class="input-group col">
-                        <span class="input-group-text">HDL</span>
-                        <input type="text" class="form-control" placeholder="HDL (20-100)" id="hdl_input">
-                    </div>
-                    <div class="input-group col">
-                        <span class="input-group-text">LDL</span>
-                        <input type="text" class="form-control" placeholder="LDL (30 - 300)" id="ldl_input">
-                    </div>
+                            <!-- diabetes -->
+                            <div class="col btn-group" role="group" aria-label="Basic example">
+                                <div class="form-check form-switch mx-auto">
+                                    <input class="form-check-input" type="checkbox" id="diabetes_input">
+                                    <label class="form-check-label" for="diabetes_input">Diabetes?</label>
+                                </div>
+                            </div>
 
-             </div>
+                            <!-- hyp treatment -->
+                            <div class="col btn-group" role="group" aria-label="Basic example">
+                                <div class="form-check form-switch mx-auto">
+                                    <input class="form-check-input" type="checkbox" id="asp_input">
+                                    <label class="form-check-label" for="asp_input">On Hypertension Treatment?</label>
+                                </div>
+                            </div>
 
-             <div class="row">
-                <div class="btn-group col" role="group" aria-label="Basic example">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="diabetes_input">
-                        <label class="form-check-label" for="diabetes_input">Diabetes?</label>
-                      </div>
-                </div>
-                <div class="btn-group col" role="group" aria-label="Basic example">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="asp_input">
-                        <label class="form-check-label" for="asp_input">On Hypertension Treatment?</label>
-                      </div>
-                </div>
-                <div class="btn-group col" role="group" aria-label="Basic example">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="smoker_input">
-                        <label class="form-check-label" for="smoker_input">Present or Past Smoker?</label>
-                      </div>
-                </div>
-                    <button type="button" onclick="calculateRisk()" class="btn btn-outline-light" data-bs-toggle="button" style="color:#006aff" >Click to view result</button>
+                            <!-- smoker? -->
+                            <div class="col btn-group" role="group" aria-label="Basic example">
+                                <div class="form-check form-switch mx-auto">
+                                    <input class="form-check-input" type="checkbox" id="smoker_input">
+                                    <label class="form-check-label" for="smoker_input">Present or Past Smoker?</label>
+                                </div>
+                            </div>
 
-         </div>
+                </div> 
 
-                
-
+                <!-- calculate risk button -->
+                <button type="button" onclick="calculateRisk()" class="btn btn-outline-primary rounded-3 mt-2" data-bs-toggle="button" >Click to view result</button>
+                <!-- alert whether data is vaild -->
+                <p id="alerttext" style="color:red"></p>
+                            <!-- Gives info on different hypertension classes -->
 
             </div>
-                          <!-- Gives info on different hypertension classes -->
-                          <br>
-                          <p id="alerttext" style="color:red"></p>
-                          <h5>Analysis</h5>
-                          <p id="risknum">Your risk will be calculated here.</p>
-                          <p>Hypertension Class: <span id="classtext"></span>, <span id="desctext"></span></p>
-                          <p id="bmi">BMI: <span id="bminum"></span></p>
             
+            <!-- nav bar to display data (bottom) -->
 
-        
-        </div>
+            <nav class="navbar sticky-bottom bg-info-subtle">
+                    <div class="row row-cols-3 w-100 m-1">
 
-    </div>
+                                <!-- 10yr cv risk -->
+                                <div class="col">
+                                    <div  class="float-start fw-bold text-center border border-secondary rounded-3 p-2">10 Year CV Risk: <span id="risknum"> </span></div>
+                                </div>
+
+                                <!-- title -->
+                                <div class="col">
+                                    <div class="mx-auto fw-bold text-center fs-4">Analysis</div>
+                                </div>
+
+                                <!-- bmi -->
+                                <div class="col">
+                                    <div id="bmi" class="float-end fw-bold text-center border border-secondary rounded-3 p-2">BMI: <span id="bminum"> </span></div>
+                                </div>
+                    </div>
+
+                    <!-- analysis -->
+                    <div class="row-cols-1 w-100 rounded-3 m-3 p-2">
+
+                                <!-- class of cv risk -->
+                                <div id="classtext" class="col mx-auto fw-bold text-center fs-6"> </div> 
+                                <!-- advice/description -->
+                                <div id="desctext" class="col mx-auto fs-8 text-center"></div>
+
+                    </div>
+
+              </nav>
+
+            
+                
+                
+                            
+
   </body>
 
 </html>
