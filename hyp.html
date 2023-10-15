@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hypertension Risk Calculator</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <script src="hyp.js"></script>
     <script src="lib.js"></script>
   </head>
@@ -16,127 +16,103 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 
-    <div class="container text-center">
+    <nav class="navbar sticky-top navbar-expand-lg bg-info-subtle">
 
-        <div class="row">
-
-            <div class="col fs-1">
-                Hypertension Assessment
+        <div class="container-fluid">
+  
+          <a class="navbar-brand f-3 fw-bold" href="main.html">Hypertension Risk Calculator</a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav w-100 d-flex justify-content-end">
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" aria-current="page" href="main.html">Home</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="cardio.html" role="button">Cardiovascular Risk</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="hyp.html" role="button">Hypertension</a>
+  
+              <a class="btn btn-outline-primary p-auto w-atuo fs-8 m-2" href="cancer.html" role="button">Cancer Screening</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="vax.html" role="button">Vaccinations</a>
             </div>
-
+          </div>
+  
         </div>
+      </nav>
 
-        <div class="row">
-            <a href="main.html">Home</a>
-        </div>
-        <div class="row">
-            <div class="col-4 text-center">
-                <div class="d-block d-md-none"><a href="cardio.html" style="text-align: center">CVD Risk</a></div>
-                <div class="d-none d-md-block"><a href="cardio.html" style="text-align: center">Cardiovascular Risk</a></div>
-            </div>
-            <div class="col-4 text-center">
-                <div class="d-block d-md-none"><a href="cancer.html" style="text-align: center">Cancer</a></div>
-                <div class="d-none d-md-block"><a href="cancer.html" style="text-align: center">Cancer Recommendations</a></div>
-            </div>
-            <div class="col-4 text-center">
-                <div class="d-block d-lg-none"><a href="vax.html" style="text-align: center">Vaccinations</a></div>
-                <div class="d-none d-lg-block"><a href="vax.html" style="text-align: center">Vaccination Recommendations</a></div>
-            </div>
-        </div>
+
+            <div class="container text-center">
 
 
 
-        <div class="row p-3 text-primary-emphasis bg-light-subtle border border-primary-subtle rounded-3 gap-3"> 
-
-
-              <!-- <div class="row"> -->
-                <div class="col align-self-center">
-                    <button type="button" class="btn btn-outline-light" data-bs-toggle="button" style="color:#0480fc; outline: 3px" onclick="risk()">Assess risk</button>
-                    <p>Hypertension class: <span id="risk_output">---</span></p>
-                </div>
                 
-                <div class="input-group mb-6 col">
-                    <span class="input-group-text">Systolic Blood Pressure</span>
-                    <input type="text" class="form-control" placeholder="(90-300)" id="sys_input">
-                    <span class="input-group-text">bpm</span> 
-                  </div>
-                    <div class="input-group col">
-                        <span class="input-group-text">Diastolic Blood Pressure</span>
-                        <input type="text" class="form-control" placeholder="(50-240)" id="dia_input">
-                        <span class="input-group-text">bpm</span> 
-                    </div>
-              </div>
+                <div class="row row-cols-2 m-5"> 
 
-              <p>Click "Assess Risk" to view the hypertension category.</p>
-              <p id="alerttext" style="color:red"></p>
+                        <div class="col align-self-center">
+                            <button type="button" class="btn btn-outline-primary rounded-3 mt-5" data-bs-toggle="button" onclick="risk()">Assess risk</button>
+                            <!-- <p>Hypertension class: <span id="risk_output"></span></p> -->
+                        </div>
+                        
+                        <div class="col">
+                                <div class="fs-3 fw-bold"> Blood Pressure </div>
 
-              <!-- Gives info on different hypertension classes -->
-              <h5>Class: <span id="classtext"></span></h5>
-              <p id="desctext">...</p>
+                                <div class="input-group mt-3 mb-4">
+                                    <span class="input-group-text">Systolic</span>
+                                    <input type="number" min="90" max="300" class="form-control" placeholder="(90-300)" id="sys_input">
+                                    <span class="input-group-text">bpm</span> 
+                                </div>
 
 
-               <!-- <div class="row">
-                    <div class="input-group col">
-                        <span class="input-group-text">Total Cholestrol</span>
-                        <input type="text" class="form-control" placeholder="Total (130 - 320)" id="chol_input">
-                        <span class="input-group-text">mg/dL</span> 
-                    </div>
-                    <div class="input-group col">
-                        <span class="input-group-text">HDL</span>
-                        <input type="text" class="form-control" placeholder="HDL (20 - 100)" id="hdl_input">
-                        <span class="input-group-text">mg Hg</span> 
-                    </div>
-                    <div class="input-group col">
-                        <span class="input-group-text">LDL</span>
-                        <input type="text" class="form-control" placeholder="LDL (30 - 300)">
-                        <span class="input-group-text">mg Hg</span> 
-                    </div>
-                    <div class="input-group col">
-                        <span class="input-group-text" for="inputGroupSelect01">Race</span>
-                        <select class="form-select" id="inputGroupSelect01">
-                        <option selected>Choose...</option>
-                        <option value="1">Caucasian</option>
-                        <option value="2">African American</option>
-                        <option value="3">Other</option>
-                        </select>
-                    </div>
+                                <div class="input-group">
+                                        <span class="input-group-text">Diastolic</span>
+                                        <input type="number" min="50" max="240" class="form-control" placeholder="(50-240)" id="dia_input">
+                                        <span class="input-group-text">bpm</span> 
+                                </div>
 
-             </div>
-
-             <div class="row">
-                <div class="input-group col">
-                    <span class="input-group-text">Diastolic BP</span>
-                    <input type="text" class="form-control" placeholder="Total (60 - 130)">
-                    <span class="input-group-text">mg Hg</span> 
+                        </div>
                 </div>
-                <div class="btn-group col" role="group" aria-label="Basic example">
-                        <span class="input-group-text">Diabetes?</span>
-                        <button type="button" class="btn btn-outline-light" data-bs-toggle="button" style="color:#212529" >Yes</button>
-                        <button type="button" class="btn btn-outline-light" data-bs-toggle="button" style="color:#212529" >No</button>
-                </div>
-                <div class="btn-group col" role="group" aria-label="Basic example">
-                    <span class="input-group-text">On Asprin Treatment</span>
-                    <button type="button" class="btn btn-outline-light" data-bs-toggle="button" style="color:#212529" >Yes</button>
-                    <button type="button" class="btn btn-outline-light" data-bs-toggle="button" style="color:#212529" >No</button>
-                </div>
-                <div class="btn-group col" role="group" aria-label="Basic example">
-                    <span class="input-group-text">Smoker?</span>
-                    <button type="button" class="btn btn-outline-light" data-bs-toggle="button" style="color:#212529" >Yes</button>
-                    <button type="button" class="btn btn-outline-light" data-bs-toggle="button" style="color:#212529" >No</button>
-                </div>
-                    <button type="button" class="btn btn-outline-light" data-bs-toggle="button" style="color:#212529" >Click to view result</button>
 
-         </div>
+                <p id="alerttext" style="color:red"></p>
+
+                <!-- <h5>Class: <span id="classtext"></span></h5>
+                <p id="desctext">...</p> -->
 
                 
 
 
+                
             </div>
- -->
+
+          <nav class="navbar sticky-bottom bg-info-subtle mt-5">
+                        <div class="row row-cols-3 w-100 m-1">
+                                    <div class="col">
+                                        <div class="float-start fw-bold text-center border border-secondary rounded-3 p-2">Hypertension Class: <span id="classtext"></span></div>
+                                    </div>
+
+                                    <!-- title -->
+                                    <div class="col">
+                                        <div class="mx-auto fw-bold text-center fs-4">Analysis</div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="float-end fw-bold text-center border border-secondary rounded-3 p-2">Risk: <span id="risk_output"></span></div>
+                                    </div>
+                        </div>
+
+                        <!-- analysis -->
+                        <div class="row-cols-1 w-100 rounded-3 m-3 p-2">
+
+ 
+                                    <div id="desctext" class="col mx-auto fs-8 text-center"></div>
 
         
-        </div>
 
+                        </div>
+
+            </nav>
     </div>
   </body>
 
