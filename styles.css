@@ -2,6 +2,53 @@ input::placeholder {
     font-size: 12px;
 }
 
-.container {
+.c-container {
     overflow: hidden;
+    width: 90%;
 }
+
+.fs-7 { font-size: 0.875em; }
+.fs-8 { font-size: 0.75em; }
+.fs-9 { font-size: 0.625em; }
+.fs-10 { font-size: 0.5em; }
+
+
+
+.c-cont {
+    height: 480px;
+}
+
+.c-img {
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.mb-6 {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .mb-7 {
+    margin-bottom: 1.75rem !important;
+  }
+  
+  .mb-8 {
+    margin-bottom: 2rem !important;
+  }
+  
+  .mb-9 {
+    margin-bottom: 2.25rem !important;
+  }
+  
+  .mb-10 {
+    margin-bottom: 2.5rem !important;
+  }
+  
+  .mb-11 {
+    margin-bottom: 2.75rem !important;
+  }
+  
+  .mb-12 {
+    margin-bottom: 3rem;
+  }
+  
