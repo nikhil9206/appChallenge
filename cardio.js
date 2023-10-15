@@ -180,7 +180,7 @@ function calculateRisk() {
     var height = parseInt(getText("hft_input")) * 12 + parseInt(getText("hin_input"));
     var weight = parseInt(getText("weight_input"));
 
-    setText("risknum", "Your risk will be calculated here.");
+    setText("risknum", "");
     setText("classtext", "");
     setText("desctext", "");
     setText("bminum", "");
@@ -204,7 +204,7 @@ function calculateRisk() {
     } else if (chol < (hdl + ldl)) {
         setText("alerttext", "The sum of HDL and LDL must be less than total cholesterol");
     } else {
-        setText("risknum", "Chance of developing cardiovascular disease in the next 10 years: " + risk + "%");
+        setText("risknum",  risk + "%");
         hyprisk();
         var bmi = (weight / (height * height)) * 703;
         bmi = Math.round(bmi * 10) / 10;
