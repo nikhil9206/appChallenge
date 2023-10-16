@@ -92,14 +92,15 @@ function risk() {
         prostateBlock.style.display = 'none';
         setText("prostatetext", "");
     } else if (age >= 40 && age < 45 && gender == false) {
+        prostateBlock.style.display = 'block';
         setText("prostatetext", "Men with more than one close relative who had prostate cancer before age 65 are at even higher risk and should talk with a doctor about testing starting at age 40.");
     } else if (age >= 45 && age < 50 && gender == false) {
+        prostateBlock.style.display = 'block';
         setText("prostatetext", "Starting at age 45, men at higher than average risk of prostate cancer should talk with a doctor about the uncertainties, risks, and potential benefits of testing so they can decide if they want to be tested.");
     } else if (age >= 50 && gender == false) {
+        prostateBlock.style.display = 'block';
         setText("prostatetext", "Starting at age 50, all men at average risk should talk with a health care provider about the uncertainties, risks, and potential benefits of testing so they can decide if they want to be tested. Overall health status, and not age alone, is important when making decisions about prostate cancer testing. Men who can expect to live at least 10 more years should talk with a health care provider about the uncertainties, risks, and potential benefits of testing so they can decide if they want to be tested.");
     }
-
-}
 
 
 
