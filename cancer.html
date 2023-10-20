@@ -97,11 +97,230 @@
         </div>
 
         <nav class="navbar fixed-bottom bg-info-subtle mt-5">
-            <div class="w-100 h-100 m-1">
+            <div class="row row-cols-3 w-100 h-100 m-1">
+
+                         <!-- title -->
+                        <div class="col">
+                            <div class="mx-auto fw-bold text-center fs-4"></div>
+                        </div>
 
                         <!-- title -->
                         <div class="col">
                             <div class="mx-auto fw-bold text-center fs-4">Analysis</div>
+                        </div>
+
+                         <!-- title -->
+                         <div class="col">
+                            <button type="button" class="float-end btn btn-outline-primary" data-bs-toggle="button" onClick="window.location.reload();">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"></path>
+                                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"></path>
+                                </svg>
+                            </button>
+                        </div>
+                        
+
+                            
+            </div>
+            
+
+
+            <div class="w-100 m-3">
+
+                        <div class="accordion" >
+
+                            <div class="accordion-item" style="display: none;" id="breast">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        Breast Cancer Screening
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div id="breasttext" class="accordion-body"></div>
+                                    </div>
+                            </div>
+
+
+                            <div class="accordion-item" style="display: none;" id="lung">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        Lung Cancer Screening
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div id="lungtext" class="accordion-body"></div>
+                                    </div>
+                            </div>
+
+
+                            <div class="accordion-item" style="display: none;" id="colon">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        Colon Cancer Screening
+                                        </button>
+                                    </h2>
+
+                                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                        <div id="colontext" class="accordion-body"></div>
+                                    </div>
+                            </div>
+
+
+                            <div class="accordion-item" style="display: none;" id="cervix">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Cervix Cancer Screening
+                                    </button>
+                                </h2>
+
+                                <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div id="cervixtext" class="accordion-body"></div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="accordion-item" style="display: none;" id="prostate">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                    Prostate Cancer Screening
+                                    </button>
+                                </h2>
+
+                                <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div id="prostatetext" class="accordion-body"></div>
+                                </div>
+                            </div>
+                            
+
+                        </div>
+            </div>
+
+        </nav>
+
+    
+  </body>
+
+</html><!doctype html>
+
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cancer Screening</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="lib.js"></script>
+    <script src="cancer.js"></script>
+
+    
+  </head>
+
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <nav class="navbar sticky-top navbar-expand-lg bg-info-subtle">
+
+        <div class="container-fluid">
+  
+          <a class="navbar-brand f-3 fw-bold" href="main.html">Cancer Screening Recommendations</a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav w-100 d-flex justify-content-end">
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" aria-current="page" href="main.html">Home</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="cardio.html" role="button">Cardiovascular Risk</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="hyp.html" role="button">Hypertension</a>
+  
+              <a class="btn btn-outline-primary p-auto w-atuo fs-8 m-2" href="cancer.html" role="button">Cancer Screening</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="vax.html" role="button">Vaccinations</a>
+            </div>
+          </div>
+  
+        </div>
+      </nav>
+
+
+    <div class="container text-center m-4">
+
+
+
+        <div class="row row-cols-2 mb-2"> 
+
+
+                <div class="col align-self-center">
+                    <button type="button" class="btn btn-outline-primary mt-5" data-bs-toggle="button" onclick="risk()">View recommendations</button>
+                    
+                </div>
+                
+                <div class="col">
+
+                    <div class="fw-bold fs-3"> Background </div>
+
+                    <div class="input-group mt-3 mb-4">
+                        <span class="input-group-text">Age</span>
+                        <input type="number" min="20" max="120" class="form-control" placeholder="(20-120)" id="age_input">
+                        <span class="input-group-text">years</span> 
+                    </div>
+
+                    <div class="input-group mb-4">
+                        <span class="input-group-text" for="gender_input">Sex</span>
+                        <select class="form-select" id="gender_input">
+                        <option selected>Choose...</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="col btn-group" role="group" aria-label="Basic example">
+                        <div class="form-check form-switch mx-auto">
+                            <input class="form-check-input" type="checkbox" id="smoker_input">
+                            <label class="form-check-label" for="smoker_input">Present or Past Smoker?</label>
+                        </div>
+                    </div>
+
+                </div>
+
+
+        </div>
+
+        
+              <p id="alerttext" style="color:red"></p>
+              <!-- <p id="breasttext"></p> -->
+
+
+
+        </div>
+
+        <nav class="navbar fixed-bottom bg-info-subtle mt-5">
+            <div class="row row-cols-3 w-100 h-100 m-1">
+
+                         <!-- title -->
+                        <div class="col">
+                            <div class="mx-auto fw-bold text-center fs-4"></div>
+                        </div>
+
+                        <!-- title -->
+                        <div class="col">
+                            <div class="mx-auto fw-bold text-center fs-4">Analysis</div>
+                        </div>
+
+                         <!-- title -->
+                         <div class="col">
+                            <button type="button" class="float-end btn btn-outline-primary" data-bs-toggle="button" onClick="window.location.reload();">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"></path>
+                                    <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"></path>
+                                </svg>
+                            </button>
                         </div>
                         
 
