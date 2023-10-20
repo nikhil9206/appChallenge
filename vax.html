@@ -6,8 +6,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Vaccinations</title>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
     <script src="vax.js"></script>
     <script src="lib.js"></script>
   </head>
@@ -15,39 +15,186 @@
   <body>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
+    <nav class="navbar sticky-top navbar-expand-lg bg-info-subtle">
 
-    <div class="container text-center">
+        <div class="container-fluid">
+  
+          <a class="navbar-brand f-3 fw-bold" href="main.html">Vaccination Recommendations</a>
+          
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+  
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav w-100 d-flex justify-content-end">
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" aria-current="page" href="main.html">Home</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="cardio.html" role="button">Cardiovascular Risk</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="hyp.html" role="button">Hypertension</a>
+  
+              <a class="btn btn-outline-primary p-auto w-atuo fs-8 m-2" href="cancer.html" role="button">Cancer Screening</a>
+  
+              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="vax.html" role="button">Vaccinations</a>
+            </div>
+          </div>
+  
+        </div>
+      </nav>
 
-        <div class="row">
 
-            <div class="col fs-1">
-                Vaccinations
-            </div>
-            <div class="row">
-                <a href="main.html">Home</a>
-            </div>
-            <div class="row">
-                <div class="col-4 text-center">
-                    <div class="d-block d-md-none"><a href="cardio.html" style="text-align: center">CVD Risk</a></div>
-                    <div class="d-none d-md-block"><a href="cardio.html" style="text-align: center">Cardiovascular Risk</a></div>
+      <div class="container text-center m-4">
+
+
+
+        <div class="row row-cols-2 mb-2"> 
+
+
+                <div class="col align-self-center">
+
+                    <button type="button" class="btn btn-outline-primary mt-5" data-bs-toggle="button" onclick="risk()">View recommendations</button>
+                    
                 </div>
-                <div class="col-4 text-center d-block overflow-hidden">
-                    <a href="hyp.html">Hypertension</a>
+                
+                <div class="col">
+
+                    <div class="fw-bold fs-3"> Background </div>
+
+                    <div class="input-group mt-3 mb-4">
+                        <span class="input-group-text">Age</span>
+                        <input type="num" min="20" max="120" class="form-control" placeholder="(20-120)" id="age_input">
+                        <span class="input-group-text">years</span> 
+                    </div>
+
+                    <div class="input-group mb-4">
+                        <span class="input-group-text" for="gender_input">Sex</span>
+                        <select class="form-select" id="gender_input">
+                        <option selected>Choose...</option>
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                        </select>
+                    </div>
+
+
                 </div>
-                <div class="col-4 text-center">
-                    <div class="d-block d-md-none"><a href="cancer.html" style="text-align: center">Cancer</a></div>
-                    <div class="d-none d-md-block"><a href="cancer.html" style="text-align: center">Cancer Recommendations</a></div>
-                </div>
-            </div>
+
 
         </div>
 
+        
+              <p id="alerttext" style="color:red"></p>
+              <!-- <p id="breasttext"></p> -->
 
 
-        <div class="row p-3 text-primary-emphasis bg-light-subtle border border-primary-subtle rounded-3 gap-3"> 
+
+        </div>
+
+        <nav class="navbar fixed-bottom bg-info-subtle mt-5">
+            <div class="w-100 h-100 m-1">
+
+                        <!-- title -->
+                        <div class="col">
+                            <div class="mx-auto fw-bold text-center fs-4">Analysis</div>
+                        </div>
+                        
+
+                            
+            </div>
+            
+
+        <div class="row row-cols-2 w-100 m-2">
+
+            <div class="col ">
+
+                <ol class="list-group list-group">
+
+                  <div class="rounded-3 m-1" style="display: none;" id="flu">
+                    <li class="list-group-item d-flex justify-content-between align-items-start" style="display: none; height: 42px;" >
+                      <div class="ms-2 me-auto" id="flutext"></div>
+                    </li>
+                  </div>
 
 
-              <!-- <div class="row"> -->
+                  <div class="rounded-3 m-1" style="display: none;"  id="tdp">
+                    <li class="list-group-item d-flex justify-content-between align-items-start" style="display: none;height: 42px;">
+                      <div class="ms-2 me-auto" id="tdptext"></div>
+                    </li>
+                  </div>
+
+
+                  <div class="rounded-3 m-1" style="display: none;" id="hpv">
+                    <li class="list-group-item d-flex justify-content-between align-items-start" style="display: none; height: 42px;">
+                      <div class="ms-2 me-auto" id="hpvtext"></div>
+                    </li>
+                  </div>
+
+
+                  <div class="rounded-3 m-1" style="display: none;" id="zoster">
+                    <li class="list-group-item d-flex justify-content-between align-items-start" style="display: none;height: 42px;">
+                        <div class="ms-2 me-auto" id="zostertext"></div>
+                    </li>
+                  </div>
+
+
+                  <div class="rounded-3 m-1" style="display: none;" id="pneumonia">
+                    <li class="list-group-item d-flex justify-content-between align-items-start" style="display: none;height: 42px;">
+                      <div class="ms-2 me-auto" id="pneumoniatext"></div>
+                    </li>
+                  </div>
+
+                  </ol>
+            </div>
+
+            <div class="col">
+
+                <ol class="list-group list-group">
+
+                  <div class="rounded-3 m-1" style="display: none;" id="covid">
+                    <li class="list-group-item d-flex justify-content-between align-items-start" style="display: none; height: 42px;">
+                      <div class="ms-2 me-auto" id="covidtext"></div>
+                    </li>
+                  </div>
+
+
+                  <div class="rounded-3 m-1" style="display: none;" id="mmr">
+                    <li class="list-group-item d-flex justify-content-between align-items-start" style="display: none;height: 42px;">
+                      <div class="ms-2 me-auto" id="mmrtext"></div>
+                    </li>
+                  </div>
+
+                  
+                  <div class="rounded-3 m-1" style="display: none;" id="meningitis">
+                    <li class="list-group-item d-flex justify-content-between align-items-start" style="display: none;height: 42px;">
+                      <div class="ms-2 me-auto" id="meningitistext"></div>
+                    </li>
+                  </div>
+
+
+                  <div class="rounded-3 m-1" style="display: none;" id="rsv">
+                    <li class="list-group-item d-flex justify-content-between align-items-start" style="display: none;height: 42px;">
+                        <div class="ms-2 me-auto" id="rsvtext"></div>
+                    </li> 
+                  </div>
+
+                  <div class="rounded-3 m-1" style="display: none;" id="hepatitis">
+                    <li class="list-group-item d-flex justify-content-between align-items-start" style="display: none;height: 42px;">
+                      <div class="ms-2 me-auto" id="hepatitistext"></div>
+                    </li>
+                  </div>
+
+                  </ol>
+            </div>
+
+
+            
+        </div>
+
+    <!-- <div class="container text-center">
+
+        <div class="row p-3 text-primary-emphasis bg-light-subtle border border-primary-subtle rounded-3 m-1 gap-3"> 
+
+
+              
                 <div class="col align-self-center">
                     <button type="button" class="btn btn-outline-light" data-bs-toggle="button" style="color:#0480fc; outline: 3px" onclick="risk()">View recommendations</button>
                     <p>Hypertension class: <span id="risk_output">---</span></p>
@@ -63,17 +210,17 @@
               <p>Click "View Recommendations" to display the recommendations based on your age.</p>
               <p id="alerttext" style="color:red"></p>
 
-              <!-- Gives info on different hypertensi5tgson classes -->
+              
               <h5>Recommended vaccines: <span id="classtext"></span></h5>
               <p id="flutext"></p>
               <p id="covidtext"></p>
               <p id="tdptext"></p>
               <p id="mmrtext"></p>
               <p id="hpvtext"></p>
-              <p id="meningitistext"></p>
+              <p id="meningitistext"></p>   
               <p id="zostertext"></p>
               <p id="rsvtext"></p>
-              <p id="pneumoniatext"></p>
+              <p id="pneumoniatext"></p> -->
 
 
 
