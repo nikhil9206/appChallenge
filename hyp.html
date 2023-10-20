@@ -59,6 +59,11 @@
                         <div class="col">
                                 <div class="fs-3 fw-bold"> Blood Pressure </div>
 
+                                <!-- specification -->
+                                <div class="input-group col mt-3 mb-4">
+                                  <p style="font-size: 13px; line-height: 0px;">In blood pressure, the systolic value goes first.</p>
+                              </div>
+
                                 <div class="input-group mt-3 mb-4">
                                     <span class="input-group-text">Systolic</span>
                                     <input type="number" min="90" max="300" class="form-control" placeholder="(90-300)" id="sys_input">
@@ -88,9 +93,8 @@
 
           <nav class="navbar fixed-bottom bg-info-subtle mt-5">
                         <div class="row row-cols-3 w-100 m-1">
-                                    <div class="col">
-                                        <div class="float-start fw-bold text-center border border-secondary rounded-3 p-2">Hypertension Class: <span id="classtext"></span></div>
-                                    </div>
+                                    <div class="col"></div>
+
 
                                     <!-- title -->
                                     <div class="col">
@@ -98,15 +102,14 @@
                                     </div>
 
                                     <div class="col">
-                                        <div class="float-end fw-bold text-center border border-secondary rounded-3 p-2">Risk: <span id="risk_output"></span></div>
+                                        <div class="float-end fw-bold text-center border border-secondary rounded-3 p-2">Hypertension Class: <span id="risk_output"></span></div>
                                     </div>
                         </div>
 
                         <!-- analysis -->
-                        <div class="row-cols-1 w-100 rounded-3 m-3 p-2">
-
- 
-                                    <div id="desctext" class="col mx-auto fs-8 text-center"></div>
+                        <div class="row-cols-2 w-100 rounded-3 m-3 p-2">
+         
+                                    <div id="desctext" class="col mx-auto text-center"></div>
 
         
 

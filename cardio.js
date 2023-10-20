@@ -175,16 +175,31 @@ function calculateRisk() {
         else if (pts == 16) risk = 25;
         else if (pts >= 17) risk = 30;
     }
+
     if (race == 2) risk = Math.floor(risk * 1.25);
 
+    //Risk classification
+    var riskclass = "";
+    if (risk < 5) riskclass = "Low";
+    else if (risk >= 5 && risk <= 7) riskclass = "Borderline Low";
+    else if (risk >= 8 && risk <= 11) riskclass = "Intermediate";
+    else if (risk >= 12 && risk <= 19) riskclass = "Intermediate-High";
+    else if (risk >= 20) riskclass = "High";
+    
+
+
+    // get weight and height
     var height = parseInt(getText("hft_input")) * 12 + parseInt(getText("hin_input"));
     var weight = parseInt(getText("weight_input"));
 
+    //Setting texts to default
     setText("risknum", "");
     setText("classtext", "");
+    setText("rclasstext", "");
     setText("desctext", "");
     setText("bminum", "");
 
+    //Error messages
     if (isNaN(age) || isNaN(chol) || isNaN(hdl) || isNaN(sysBP) || isNaN(diaBP)) {
         setText("alerttext", "All numerical fields must be filled out or must contain a valid number");
     } else if (sysBP < 90 || sysBP > 300) {
@@ -205,47 +220,50 @@ function calculateRisk() {
         setText("alerttext", "The sum of HDL and LDL must be less than total cholesterol");
     } else {
         setText("risknum",  risk + "%");
+        //risk class and class-based advice
+        if (riskclass == "Low") {
+            setText("rclasstext", "You have a low risk of getting a CV disease.");
+            setText("riskadvicetext", "Maintain a healthy lifestyle to keep your risk low.");
+        } else if (riskclass == "Borderline Low") {
+            setText("rclasstext", "You have a borderline low risk of getting a CV disease.");
+            setText("riskadvicetext", "Maintain a healthy lifestyle to reduce the chances of getting a CVD.");
+        } else if (riskclass == "Intermediate") {
+            setText("rclasstext", "You have an intermediate risk of getting a CV disease.");
+            setText("riskadvicetext", "Adopt and maintain a healthy lifestyle to reduce the chances of getting a CVD. You should also regularly meet your healthcare provider to monitor your health.");
+        } else if (riskclass == "Intermediate-High") {
+            setText("rclasstext", "You have an intermediate-high risk of getting a CV disease.");
+            setText("riskadvicetext", "Adopt and maintain a healthy lifestyle to reduce the chances of getting a CVD. You should also regularly meet your healthcare provider to monitor your health.");
+        } else if (riskclass == "High") {
+            setText("rclasstext", "You have a high risk of getting a CV disease.");
+            setText("riskadvicetext", "Adopt and maintain a healthy lifestyle to reduce the chances of getting a CVD. You should also regularly meet and work closely with your healthcare provider to monitor your health and develop a plan for your health.");
+        }
+        //calculating hypertension risk and bmi
         hyprisk();
         var bmi = (weight / (height * height)) * 703;
         bmi = Math.round(bmi * 10) / 10;
         setText("bminum", bmi);
     }
-
-    
 }
 
 function hyprisk() {
     var sys = parseInt(getText("sysBP_input"));
     var dia = parseInt(getText("diaBP_input"));
 
-    if (isNaN(sys) || isNaN(dia)) {
-        setText("alerttext", "Please enter a valid number for the fields");
-    } else if (sys < 90 || sys > 300) {
-        setText("alerttext", "Systolic pressure must be between 90 and 300");
-    } else if (dia < 50 || dia > 240) {
-        setText("alerttext", "Diastolic pressure must be between 50 and 240");
-    } else if (dia > sys) {
-        setText("alerttext", "Diastolic pressure must be lower than systolic pressure"); 
-    } else if (sys < 120 && dia < 80) {
-        setText("alerttext", "");
-        setText("classtext", "Low");
+   
+    if (sys < 120 && dia < 80) {
+        setText("classtext", "You don't have hypertension.");
         setText("desctext", "Your blood pressure is at a healthy level.")
     } else if (sys < 130 && dia < 80) {
-        setText("alerttext", "");
-        setText("classtext", "Elevated");
-        setText("desctext", "You're in a prehypertensive state. You should watch your blood pressure levels and try to maintain a healthy lifestyle.")
+        setText("classtext", "You are at risk of developing hypertension.");
+        setText("desctext", "You should watch your blood pressure levels and try to maintain a healthy lifestyle.")
     } else if (sys < 140 || dia < 90) {
-        setText("alerttext", "");
-        setText("classtext", "Stage 1 Hypertension");
-        setText("desctext", "You have hypertension. You should consult a doctor and try to maintain a healthy lifestyle.")
+        setText("classtext", "You have stage 1 hypertension");
+        setText("desctext", "You should consult a doctor and try to maintain a healthy lifestyle.")
     } else if (sys < 180 || dia < 120) {
-        setText("alerttext", "");
-        setText("classtext", "Stage 2 Hypertension");
-        setText("desctext", "You have hypertension. You should consult a doctor and try to maintain a healthy lifestyle.")
+        setText("classtext", "You have stage 2 hypertension");
+        setText("desctext", "You should consult a doctor and try to maintain a healthy lifestyle.")
     } else {
-        setText("alerttext", "");
-        setText("classtext", "Hypertensive Crisis");
-        setText("desctext", "You have hypertension. You should consult a doctor and try to maintain a healthy lifestyle.")
+        setText("classtext", "You are in a hypertensive crisis");
+        setText("desctext", "You should consult a doctor and try to maintain a healthy lifestyle.")
     }
 }
-console.log(calculateRisk());
