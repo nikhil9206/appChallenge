@@ -1,242 +1,105 @@
-<!doctype html>
+function risk() {
+    var age = parseInt(getText("age_input"));
+    var gender = (parseInt(getValue("gender_input")) == 2); // false for male, true for female
+    var checkboxElement = document.getElementById('smoker_input');
+    var is_smoker = checkboxElement.checked;  // `isChecked` will be either true or false    
+    var mamm = false;
+    var cervix = false;
+    var colon = false;
+    var lung = false;
+    var prostate = false;
+    var breast = true;
+
+    var breastBlock = document.getElementById("breast");
+    var lungBlock = document.getElementById("lung");
+    var colonBlock = document.getElementById("colon");
+    var cervixBlock = document.getElementById("cervix");
+    var prostateBlock = document.getElementById("prostate");
 
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Cardiovascular  Risk Calculator</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="styles.css">
-    <script src="cardio.js"></script>
-    <script src="lib.js"></script>
-  </head>
+    if (isNaN(age)) {
+        setText("alerttext", "Please enter a valid number for the fields");
+    } else if (age < 20) {
+        setText("alerttext", "An age of at least 20 is recommended to use this tool.");
+    } else if (age > 120) {
+        setText("alerttext", "Age cannot exceed 120 years.");x  
+    } else {
+        setText("alerttext", "");
+    } 
 
-  <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    // all breast cancer
+    if (age < 40) {
+        breastBlock.style.display = 'none';
+        setText("breasttext", "")
+    } else if (gender == false) {
+        breastBlock.style.display = 'none';
+        setText("breasttext", "")
+    } else if (age >= 40 && age < 45 && gender == true) {
+        breastBlock.style.display = 'block';
+        setText("breasttext", "Women ages 40 to 44 should have the choice to start annual breast cancer screening with mammograms if they wish to do so. The pros and cons of screening should be considered when making this decision.");
+    } else if (age >= 45 && age < 55 && gender == true) {
+        breastBlock.style.display = 'block';
+        setText("breasttext", "Women ages 45 to 54 should get mammograms every year. Be sure you understand the pros and cons of breast cancer screening.");
+    } else if (age >= 55 && age < 65 && gender == true) {
+        breastBlock.style.display = 'block';
+        setText("breasttext", "Women ages 55 to 64, should switch to getting mammograms every 2 years, or you can continue to get one every year.");
+    } else if (age >= 65 && gender == true) {
+        breastBlock.style.display = 'block';
+        setText("breasttext", "Women ages 65 and over should get a mammogram every 2 years, or you can choose to get one every year. Be sure you understand the pros and cons of breast cancer screening.");
+    }
 
+    // all cevix cancer
+    if (age < 25) {
+        cervixBlock.style.display = 'none';
+        setText("cervixtext", "");
+    } else if (gender == false){
+        cervixBlock.style.display = 'none';
+        setText("cervixtext", "");
+    } else if (age >= 25 && age <= 65) {
+        cervixBlock.style.display = 'block';
+        setText("cervixtext","Starting at age 25 and through age 65, all people with a cervix should have a primary HPV test every 5 years.")
+    } else if (age > 65) {
+        cervixBlock.style.display = 'block';
+        setText("cervixtext","No testing is needed if you’ve had regular cervical cancer testing with normal results during the previous 10 years.")
+    }
 
-    <!-- nav bar -->
-    <nav class="navbar sticky-top navbar-expand-lg bg-info-subtle">
+    if (age >= 20 && age < 45) {
+        colonBlock.style.display = 'block';
+        setText("colontext", "Find out if you are at higher than average risk for colon cancer because of family history, genetic disorders, or other factors. If not, then testing is not needed at this time. If you are at increased risk, talk to a health care provider about when you need to start testing and what tests are right for you.")
+    } else if (age >= 45 && age <= 75) {
+        colonBlock.style.display = 'block';
+        setText("colontext", "All people at average risk should start testing at age 45. There are several testing options. Talk with a health care provider about which tests are best for you and how often testing should be done.");
+    } else if (age >= 76 && age <= 85) {
+        colonBlock.style.display = 'block';
+        setText("colontext", "People aged 76 to 85 should talk with their health care provider about whether continuing screening is right for them.");
+    } else if (age > 85) {
+        colonBlock.style.display = 'block';
+        setText("colontext", "Most people older than 85 should no longer be screened.");
+    }
 
-        <div class="container-fluid">
-  
-        <!-- main title button -->
-        <a class="navbar-brand f-3 fw-bold" href="main.html">Cardiovascular Risk Calculator</a>
-          
-        <!-- button expands to options -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-  
-        <!-- option and buttons -->
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav w-100 d-flex justify-content-end">
-              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" aria-current="page" href="main.html">Home</a>
-  
-              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="cardio.html" role="button">Cardiovascular Risk</a>
-  
-              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="hyp.html" role="button">Hypertension</a>
-  
-              <a class="btn btn-outline-primary p-auto w-atuo fs-8 m-2" href="cancer.html" role="button">Cancer Screening</a>
-  
-              <a class="btn btn-outline-primary p-auto w-auto fs-8 m-2" href="vax.html" role="button">Vaccinations</a>
-            </div>
-        </div>
-  
-        </div>
-      </nav>
+    if (is_smoker) {
+        lungBlock.style.display = 'block';
+        setText("lungtext", "If you have a smoking history, talk to a health care provider about it and whether you should get an annual low-dose CT scan to screen for early lung cancer. Screening may benefit if you smoke now or smoked before (quit within the past 15 years), have no signs of lung cancer, and have a 20 pack-year smoking history. ")
+    } else {
+        lungBlock.style.display = 'none';
+        setText("lungtext", "");
+    }
 
-  
-        <!-- main body -->
-        <div class="text-center bg-light-subtle ms-2 me-2 p-4">
+    if (age < 40) {
+        prostateBlock.style.display = 'none';
+        setText("prostatetext", "")
+    } else if (gender == true) {
+        prostateBlock.style.display = 'none';
+        setText("prostatetext", "");
+    } else if (age >= 40 && age < 45 && gender == false) {
+        prostateBlock.style.display = 'block';
+        setText("prostatetext", "Men with more than one close relative who had prostate cancer before age 65 are at even higher risk and should talk with a doctor about testing starting at age 40.");
+    } else if (age >= 45 && age < 50 && gender == false) {
+        prostateBlock.style.display = 'block';
+        setText("prostatetext", "Starting at age 45, men at higher than average risk of prostate cancer should talk with a doctor about the uncertainties, risks, and potential benefits of testing so they can decide if they want to be tested.");
+    } else if (age >= 50 && gender == false) {
+        prostateBlock.style.display = 'block';
+        setText("prostatetext", "Starting at age 50, all men at average risk should talk with a health care provider about the uncertainties, risks, and potential benefits of testing so they can decide if they want to be tested. Overall health status, and not age alone, is important when making decisions about prostate cancer testing. Men who can expect to live at least 10 more years should talk with a health care provider about the uncertainties, risks, and potential benefits of testing so they can decide if they want to be tested.");
+    }
 
-            <!-- all questions -->
-            <div class="row row-cols-4 ms-1 me-1 "> 
-
-                    <!-- all background questions -->
-                    <div class="col bg-light-subtle rounded-3">
-                                <!-- title -->
-                                <div class="fs-3 fw-bold">Background</div>
-
-                                <!-- gender -->
-                                <div class="input-group col mt-1 mb-3">
-                                    <span class="input-group-text fs-8" for="gender_input">Sex</span>
-                                    <select class="form-select fs-8" id="gender_input">
-                                    <option selected>Choose...</option>
-                                    <option value="1">Male</option>
-                                    <option value="2">Female</option>
-                                    </select>
-                                </div>
-
-                                <!-- ethnicity -->
-                                <div class="input-group col mb-3">
-                                    <span class="input-group-text fs-8" for="race_input">Ethinicity</span>
-                                    <select class="form-select fs-8" id="race_input">
-                                    <option selected> Choose...</option>
-                                    <option value="1">Caucasian</option>
-                                    <option value="2">African-American</option>
-                                    <option value="3">Other</option>
-                                    </select>
-                                </div>
-
-                                <!-- age -->
-                                <div class="input-group col mb-3">
-                                        <span class="input-group-text fs-8">Age</span>
-                                        <input type="number" min="20" class="form-control" placeholder="(20 or older)" id="age_input">
-                                        <span class="input-group-text fs-8">years</span> 
-                                </div>
-                    </div>
-
-
-                    <!-- all physical questions -->
-                    <div class="col bg-light-subtle rounded-3">
-                                <!-- title -->
-                                <div class="fs-3 fw-bold">Stature </div>
-                        
-                                <!-- height -->
-                                <div class="input-group col mt-3 mb-4">
-                                    <span class="input-group-text fs-8">Height</span>
-                                    <input type="number" step="1" min="0" class="form-control" placeholder="ft" id="hft_input">
-                                    <span class="input-group-text fs-10">'</span>
-                                    <input type="number" step="1" min="0" max="11" class="form-control" placeholder="in" id="hin_input">
-                                    <span class="input-group-text fs-10">''</span> 
-                                </div>
-
-                                <!-- weight -->
-                                <div class="input-group col">
-                                    <span class="input-group-text fs-8">Weight</span>
-                                    <input type="number" step="0.1" min="0" class="form-control" placeholder="Weight" id="weight_input">
-                                    <span class="input-group-text fs-8">lbs</span> 
-                                </div>
-                    </div>
-
-
-                    <!-- all bp questions -->
-                    <div class="col bg-light-subtle rounded-3">
-                                <!-- title -->
-                                <div class="fs-3 fw-bold">Blood Pressure</div>
-                        
-                                <!-- systolic bp -->
-                                <div class="input-group col mt-3 mb-4">
-                                        <span class="input-group-text fs-8">Systolic</span>
-                                        <input type="number" min="90" max="300"class="form-control" placeholder="(90-300)" id="sysBP_input">
-                                        <span class="input-group-text fs-8">bpm</span>
-                                </div>
-
-                                <!-- distolic bp -->
-                                <div class="input-group col">
-                                        <span class="input-group-text fs-8">Diastolic</span>
-                                        <input type="number" min="50" max="240" class="form-control" placeholder="(50-240)" id="diaBP_input">
-                                        <span class="input-group-text fs-8">bpm</span> 
-                                </div>
-                    </div>
-
-
-                    <div class="col bg-light-subtle rounded-3">
-
-                                <!-- title -->
-                                <div class="fs-3 fw-bold">Cholestrol</div>
-                        
-                                <!-- total chol -->
-                                <div class="input-group col mb-3">
-                                    <span class="input-group-text fs-8">Total</span>
-                                    <input type="number" min="130" max="320" class="form-control" placeholder="(130-320)" id="chol_input">
-                                </div>
-
-                                <!-- hdl -->
-                                <div class="input-group col mb-3">
-                                    <span class="input-group-text fs-8">HDL</span>
-                                    <input type="number" min="20" max="100" class="form-control" placeholder="(20-100)" id="hdl_input">
-                                </div>
-
-                                <!-- ldl -->
-                                <div class="input-group col mb-3">
-                                    <span class="input-group-text fs-8">LDL</span>
-                                    <input type="number" min="30" max="300" class="form-control" placeholder="(30 - 300)" id="ldl_input">
-                                </div>
-
-                    </div>
-
-                </div>
-
-                <!-- other factors -->
-                <div class="fs-3 fw-bold text-center"> Other </div>
-
-                <div class="row row-cols-3 ms-2 me-2">
-
-                            <!-- diabetes -->
-                            <div class="col btn-group" role="group" aria-label="Basic example">
-                                <div class="form-check form-switch mx-auto">
-                                    <input class="form-check-input" type="checkbox" id="diabetes_input">
-                                    <label class="form-check-label" for="diabetes_input">Diabetes?</label>
-                                </div>
-                            </div>
-
-                            <!-- hyp treatment -->
-                            <div class="col btn-group" role="group" aria-label="Basic example">
-                                <div class="form-check form-switch mx-auto">
-                                    <input class="form-check-input" type="checkbox" id="asp_input">
-                                    <label class="form-check-label" for="asp_input">On Hypertension Treatment?</label>
-                                </div>
-                            </div>
-
-                            <!-- smoker? -->
-                            <div class="col btn-group" role="group" aria-label="Basic example">
-                                <div class="form-check form-switch mx-auto">
-                                    <input class="form-check-input" type="checkbox" id="smoker_input">
-                                    <label class="form-check-label" for="smoker_input">Present or Past Smoker?</label>
-                                </div>
-                            </div>
-
-                </div> 
-
-                <!-- calculate risk button -->
-                <button type="button" onclick="calculateRisk()" class="btn btn-outline-primary rounded-3 mt-2" data-bs-toggle="button" >Click to view result</button>
-                <!-- alert whether data is vaild -->
-                <p id="alerttext" style="color:red"></p>
-                            <!-- Gives info on different hypertension classes -->
-
-            </div>
-            
-            <!-- nav bar to display data (bottom) -->
-
-            <nav class="navbar fixed-bottom bg-info-subtle">
-                    <div class="row row-cols-3 w-100 m-1">
-
-                                <!-- 10yr cv risk -->
-                                <div class="col">
-                                    <div  class="float-start fw-bold text-center border border-secondary rounded-3 p-2">10 Year CV Risk: <span id="risknum"> </span></div>
-                                </div>
-
-                                <!-- title -->
-                                <div class="col">
-                                    <div class="mx-auto fw-bold text-center fs-4">Analysis</div>
-                                </div>
-
-                                <!-- bmi -->
-                                <div class="col">
-                                    <div id="bmi" class="float-end fw-bold text-center border border-secondary rounded-3 p-2">BMI: <span id="bminum"> </span></div>
-                                </div>
-                    </div>
-
-                    <!-- analysis -->
-                    <div class="row-cols-1 w-100 rounded-3 m-3 p-2">
-
-                                <!-- class of cv risk -->
-                                <div id="classtext" class="col mx-auto fw-bold text-center fs-6"> </div> 
-                                <!-- advice/description -->
-                                <div id="desctext" class="col mx-auto fs-8 text-center"></div>
-
-                    </div>
-
-              </nav>
-
-            
-                
-                
-                            
-
-  </body>
-
-</html>
+}
