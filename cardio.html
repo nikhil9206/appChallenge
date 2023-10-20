@@ -97,16 +97,16 @@
                                 <!-- height -->
                                 <div class="input-group col mt-3 mb-4">
                                     <span class="input-group-text fs-8">Height</span>
-                                    <input type="text" class="form-control" placeholder="ft" id="hft_input">
+                                    <input type="number" step="1" min="0" class="form-control" placeholder="ft" id="hft_input">
                                     <span class="input-group-text fs-10">'</span>
-                                    <input type="text" class="form-control" placeholder="in" id="hin_input">
+                                    <input type="number" step="1" min="0" max="11" class="form-control" placeholder="in" id="hin_input">
                                     <span class="input-group-text fs-10">''</span> 
                                 </div>
 
                                 <!-- weight -->
                                 <div class="input-group col">
                                     <span class="input-group-text fs-8">Weight</span>
-                                    <input type="number" step="1" min="0" class="form-control" placeholder="Weight" id="weight_input">
+                                    <input type="number" step="0.1" min="0" class="form-control" placeholder="Weight" id="weight_input">
                                     <span class="input-group-text fs-8">lbs</span> 
                                 </div>
                     </div>
@@ -139,25 +139,21 @@
                                 <div class="fs-3 fw-bold">Cholestrol</div>
                         
                                 <!-- total chol -->
-                                
                                 <div class="input-group col mb-3">
                                     <span class="input-group-text fs-8">Total</span>
                                     <input type="number" min="130" max="320" class="form-control" placeholder="(130-320)" id="chol_input">
-                                    <span class="input-group-text fs-8">mg/dL</span>
                                 </div>
 
                                 <!-- hdl -->
                                 <div class="input-group col mb-3">
                                     <span class="input-group-text fs-8">HDL</span>
                                     <input type="number" min="20" max="100" class="form-control" placeholder="(20-100)" id="hdl_input">
-                                    <span class="input-group-text fs-8">mg/dL</span>
                                 </div>
 
                                 <!-- ldl -->
                                 <div class="input-group col mb-3">
                                     <span class="input-group-text fs-8">LDL</span>
                                     <input type="number" min="30" max="300" class="form-control" placeholder="(30 - 300)" id="ldl_input">
-                                    <span class="input-group-text fs-8">mg/dL</span>
                                 </div>
 
                     </div>
@@ -205,7 +201,7 @@
             
             <!-- nav bar to display data (bottom) -->
 
-            <nav class="navbar sticky-bottom bg-info-subtle">
+            <nav class="navbar fixed-bottom bg-info-subtle">
                     <div class="row row-cols-3 w-100 m-1">
 
                                 <!-- 10yr cv risk -->
