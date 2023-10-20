@@ -22,7 +22,7 @@ function risk() {
     } else if (age < 20) {
         setText("alerttext", "An age of at least 20 is recommended to use this tool.");
     } else if (age > 120) {
-        setText("alerttext", "Age cannot exceed 120 years.");
+        setText("alerttext", "Age cannot exceed 120 years.");x  
     } else {
         setText("alerttext", "");
     } 
@@ -101,6 +101,5 @@ function risk() {
         prostateBlock.style.display = 'block';
         setText("prostatetext", "Starting at age 50, all men at average risk should talk with a health care provider about the uncertainties, risks, and potential benefits of testing so they can decide if they want to be tested. Overall health status, and not age alone, is important when making decisions about prostate cancer testing. Men who can expect to live at least 10 more years should talk with a health care provider about the uncertainties, risks, and potential benefits of testing so they can decide if they want to be tested.");
     }
-
 
 }
