@@ -178,6 +178,75 @@ function calculateRisk() {
 
     if (race == 2) risk = Math.floor(risk * 1.25);
 
+    var risklog = 0;
+    var risk2 = 0;
+
+    if (gender && race == 2) {
+        risklog += 17.114*Math.log(age);
+        risklog += 0.939*Math.log(chol);
+        risklog -= 18.92*Math.log(hdl);
+        risklog += 4.475*Math.log(age)*Math.log(hdl);
+        if (bp_treatment) {
+            risklog += 29.291*Math.log(sysBP);
+            risklog -= 6.432*Math.log(age)*Math.log(sysBP);
+        } else {
+            risklog += 27.82*Math.log(sysBP);
+            risklog -= 6.087*Math.log(age)*Math.log(sysBP);
+        }
+
+        if (smoker) risklog += 0.691;
+        if (diabetes) risklog += 0.874;
+
+        risk2 = 100*(1 - Math.pow(0.9533, Math.exp(risklog - 86.61)));
+
+    } else if (gender && race != 2) {
+        risklog -= 27.799*Math.log(age);
+        risklog += 4.884*Math.log(age)*Math.log(age);
+        risklog += 13.54*Math.log(chol);
+        risklog -= 3.114*Math.log(age)*Math.log(chol);
+        risklog -= 13.578*Math.log(hdl);
+        risklog += 3.149*Math.log(age)*Math.log(hdl);
+        if (bp_treatment) {
+            risklog += 2.019*Math.log(sysBP);
+            risklog -= 0.733*Math.log(age)*Math.log(sysBP);
+        } else {
+            risklog += 1.957*Math.log(sysBP);
+            risklog -= 0.661*Math.log(age)*Math.log(sysBP);
+        }
+        if (smoker) risklog += 7.574 - 1.665*Math.log(age);
+        if (diabetes) risklog += 0.661;
+
+        risk2 = 100*(1 - Math.pow(0.9665, Math.exp(risklog + 29.18)));
+
+    } else if (!gender && race == 2) {
+        risklog += 2.469*Math.log(age);
+        risklog += 0.302*Math.log(chol);
+        risklog -= 0.307*Math.log(hdl);
+        if (bp_treatment) risklog += 1.916*Math.log(sysBP);
+        else risklog += 1.809*Math.log(sysBP);
+        if (smoker) risklog += 0.549;
+        if (diabetes) risklog += 0.645;
+
+        risk2 = 100*(1 - Math.pow(0.8954, Math.exp(risklog - 19.54)));
+    } else if (!gender && race != 2) {
+        risklog += 12.344*Math.log(age);
+        risklog += 11.853*Math.log(chol);
+        risklog -= 2.664*Math.log(age)*Math.log(chol);
+        risklog -= 7.99*Math.log(hdl);
+        risklog += 1.769*Math.log(age)*Math.log(hdl);
+        if (bp_treatment) risklog += 1.797*Math.log(sysBP);
+        else risklog += 1.764*Math.log(sysBP);
+        if (smoker) {
+            risklog += 7.837;
+            risklog -= 1.795*Math.log(age);
+        }
+        if (diabetes) risklog += 0.658;
+
+        risk2 = 100*(1 - Math.pow(0.9144, Math.exp(risklog - 61.18)));
+    }
+
+    risk = Math.round((risk+risk2)/2);
+
     //Risk classification
     var riskclass = "";
     if (risk < 5) riskclass = "Low";
