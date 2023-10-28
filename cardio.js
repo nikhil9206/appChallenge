@@ -13,6 +13,7 @@ function calculateRisk() {
     var sysBP = parseInt(getText("sysBP_input"));
     var diaBP = parseInt(getText("diaBP_input"));
     var race = parseInt(getValue("race_input"));
+    var diabetes = getValue("diabetes_input");
     var bp_treatment = getValue("asp_input");
 
     var pts = 0;
