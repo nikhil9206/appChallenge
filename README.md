@@ -39,5 +39,5 @@ This project is a web-based application that provides personalized cancer screen
 ## Contact
 
 For inquiries or suggestions, please contact:  
-**Email**: [your-email@example.com]  
-**Phone**: +1 123-456-7890
+**Email**: [adapalanikhil@gmail.com]  
+**Phone**: +1 512-884-7100
